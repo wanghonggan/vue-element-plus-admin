@@ -265,6 +265,14 @@ const adminList = [
         meta: {
           title: 'router.sticky'
         }
+      },
+      {
+        path: 'crud',
+        component: 'views/Components/Crud',
+        name: 'Crud',
+        meta: {
+          title: 'router.crud'
+        }
       }
     ]
   },
@@ -486,6 +494,7 @@ const testList: string[] = [
   '/components/infotip',
   '/Components/InputPassword',
   '/Components/Sticky',
+  '/Components/Crud',
   '/hooks',
   '/hooks/useWatermark',
   '/level',

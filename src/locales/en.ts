@@ -136,7 +136,8 @@ export default {
     role: 'Role management',
     document: 'Document',
     inputPassword: 'InputPassword',
-    sticky: 'Sticky'
+    sticky: 'Sticky',
+    crud: 'Crud'
   },
   analysis: {
     newUser: 'New user',
@@ -423,5 +424,9 @@ export default {
   inputPasswordDemo: {
     title: 'InputPassword',
     inputPasswordDes: 'Secondary packaging of Input components based on ElementPlus'
+  },
+  crudDemo: {
+    title: 'Crud',
+    crud: 'Based on the secondary encapsulation of Form, Search, Descriptions, Table and other components, the unified data structure is realized.'
   }
 }

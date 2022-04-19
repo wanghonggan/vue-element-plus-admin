@@ -136,7 +136,8 @@ export default {
     role: '角色管理',
     document: '文档',
     inputPassword: '密码输入框',
-    sticky: '黏性'
+    sticky: '黏性',
+    crud: '增删改查'
   },
   analysis: {
     newUser: '新增用户',
@@ -419,5 +420,9 @@ export default {
   inputPasswordDemo: {
     title: '密码输入框',
     inputPasswordDes: '基于 ElementPlus 的 Input 组件二次封装'
+  },
+  crudDemo: {
+    title: '增删改查',
+    crudDes: '基于 Form、Search、Descriptions、Table 等组件二次封装，实现统一数据结构。'
   }
 }

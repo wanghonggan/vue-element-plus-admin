@@ -316,6 +316,14 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('router.sticky')
         }
+      },
+      {
+        path: 'crud',
+        component: () => import('@/views/Components/Crud.vue'),
+        name: 'Crud',
+        meta: {
+          title: t('router.crud')
+        }
       }
     ]
   },
