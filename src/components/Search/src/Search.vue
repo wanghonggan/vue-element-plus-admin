@@ -39,6 +39,7 @@ const emit = defineEmits(['search', 'reset'])
 const visible = ref(true)
 
 const newSchema = computed(() => {
+  console.log(props.schema)
   let schema: FormSchema[] = cloneDeep(props.schema)
   if (props.expand && props.expandField && !unref(visible)) {
     const index = findIndex(schema, (v: FormSchema) => v.field === props.expandField)

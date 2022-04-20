@@ -30,8 +30,12 @@ const searchSchema = ref<FormSchema[]>([])
 watch(
   () => props.schema,
   (crudSchema: CrudSchema[]) => {
+    console.log(crudSchema)
     const schemas = filterCrudSchema(crudSchema)
     searchSchema.value = schemas.searchSchema
+    // Promise.allSettled(schemas.searchRequestTask).then((res) => {
+    //   console.log(res)
+    // })
   },
   {
     immediate: true,

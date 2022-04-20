@@ -24,7 +24,12 @@ const crudSchema: CrudSchema[] = [
       },
       {
         field: 'author',
-        label: t('tableDemo.author')
+        label: t('tableDemo.author'),
+        search: {
+          show: true,
+          dictUrl: '/dict/one',
+          component: 'Select'
+        }
       },
       {
         field: 'display_time',
@@ -32,7 +37,12 @@ const crudSchema: CrudSchema[] = [
       },
       {
         field: 'importance',
-        label: t('tableDemo.importance')
+        label: t('tableDemo.importance'),
+        search: {
+          show: true,
+          dictName: 'importance',
+          component: 'Select'
+        }
       },
       {
         field: 'pageviews',

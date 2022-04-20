@@ -199,9 +199,9 @@ export const treeMapEach = (
  */
 export const eachTree = (treeDatas: any[], callBack: Fn, parentNode = {}) => {
   treeDatas.forEach((element) => {
-    const newNode = callBack(element, parentNode) || element
+    callBack(element, parentNode)
     if (element.children) {
-      eachTree(element.children, callBack, newNode)
+      eachTree(element.children, callBack, element)
     }
   })
 }
