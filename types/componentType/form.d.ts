@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'vue'
+import type { AxiosPromise } from 'axios'
 
 declare global {
   declare type ComponentName =
@@ -85,6 +86,8 @@ declare global {
     value?: FormValueType
     // 是否隐藏
     hidden?: boolean
+    // 远程加载下拉项
+    api?: <T = any>() => AxiosPromise<T>
   }
 
   declare type FormSetPropsType = {

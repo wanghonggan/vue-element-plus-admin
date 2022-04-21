@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { PropType, watch, ref } from 'vue'
+import { PropType, computed } from 'vue'
 import { useDesign } from '@/hooks/web/useDesign'
 import { Search } from '@/components/Search'
-import { filterCrudSchema } from './helper'
+import { useFilterCrudSchema } from './helper'
 import { ContentWrap } from '@/components/ContentWrap'
 // import { Table } from '@/components/Table'
 // import { propTypes } from '@/utils/propTypes'
@@ -24,31 +24,16 @@ const props = defineProps({
   }
 })
 
-const searchSchema = ref<FormSchema[]>([])
-
-// 监听 props.schema 过滤出所有组件的主体结构数据
-watch(
-  () => props.schema,
-  (crudSchema: CrudSchema[]) => {
-    console.log(crudSchema)
-    const schemas = filterCrudSchema(crudSchema)
-    searchSchema.value = schemas.searchSchema
-    // Promise.allSettled(schemas.searchRequestTask).then((res) => {
-    //   console.log(res)
-    // })
-  },
-  {
-    immediate: true,
-    deep: true
-  }
-)
+const allSchemas = computed(() => {
+  return useFilterCrudSchema(props.schema)
+})
 </script>
 
 <template>
   <div :class="`${prefixCls}-crud`">
     <ContentWrap>
       <slot name="search">
-        <Search v-bind="searchProps" :schema="searchSchema" />
+        <Search v-bind="searchProps" :schema="allSchemas.searchSchema" />
       </slot>
     </ContentWrap>
   </div>

@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
 import { ContentWrap } from '@/components/ContentWrap'
 import { useI18n } from '@/hooks/web/useI18n'
 import { Crud } from '@/components/Crud'
+import { getDictOneApi } from '@/api/common'
 
 const { t } = useI18n()
 
-const crudSchema: CrudSchema[] = [
+const crudSchema = reactive<CrudSchema[]>([
   {
     field: 'index',
     label: t('tableDemo.index'),
@@ -27,8 +29,8 @@ const crudSchema: CrudSchema[] = [
         label: t('tableDemo.author'),
         search: {
           show: true,
-          dictUrl: '/dict/one',
-          component: 'Select'
+          component: 'Select',
+          api: getDictOneApi
         }
       },
       {
@@ -54,7 +56,7 @@ const crudSchema: CrudSchema[] = [
     field: 'action',
     label: t('tableDemo.action')
   }
-]
+])
 </script>
 
 <template>
