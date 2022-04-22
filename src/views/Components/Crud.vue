@@ -62,11 +62,26 @@ const crudSchema = reactive<CrudSchema[]>([
   }
 ])
 
-const { register } = useCrud()
+const { register, methods } = useCrud()
+const { getTableObject } = methods
+
+const tableObject = await getTableObject()
 </script>
 
 <template>
   <ContentWrap :title="t('crudDemo.title')" :message="t('crudDemo.crudDes')">
-    <Crud :schema="crudSchema" @register="register" />
+    <Crud
+      :schema="crudSchema"
+      :table-props="{
+        pageSize: tableObject.pageSize,
+        currentPage: tableObject.currentPage,
+        data: tableObject.tableList,
+        loading: tableObject.loading,
+        pagination: {
+          total: tableObject.total
+        }
+      }"
+      @register="register"
+    />
   </ContentWrap>
 </template>

@@ -19,7 +19,7 @@ interface UseTableConfig<T, L> {
   props?: TableProps
 }
 
-interface TableObject<K, L> {
+export interface TableObject<K, L> {
   pageSize: number
   currentPage: number
   total: number
@@ -27,6 +27,15 @@ interface TableObject<K, L> {
   paramsObj: L
   loading: boolean
   currentRow: Nullable<K>
+}
+
+export interface TableMethods<K = any> {
+  setProps: (props: Recordable) => void
+  getList: () => Promise<void>
+  setColumn: (columnProps: TableSetPropsType[]) => void
+  setSearchParams: (data: Recordable) => void
+  getSelections: () => Promise<K[]>
+  delList: (ids: string[] | number[], multiple: boolean, message?: boolean) => Promise<void>
 }
 
 export const useTable = <T, K, L extends AxiosConfig = AxiosConfig>(
@@ -112,14 +121,7 @@ export const useTable = <T, K, L extends AxiosConfig = AxiosConfig>(
     }
   }
 
-  const methods: {
-    setProps: (props: Recordable) => void
-    getList: () => Promise<void>
-    setColumn: (columnProps: TableSetPropsType[]) => void
-    setSearchParams: (data: Recordable) => void
-    getSelections: () => Promise<K[]>
-    delList: (ids: string[] | number[], multiple: boolean, message?: boolean) => Promise<void>
-  } = {
+  const methods: TableMethods<K> = {
     getList: async () => {
       tableObject.loading = true
       const res = await config

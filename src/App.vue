@@ -25,9 +25,11 @@ setDefaultTheme()
 </script>
 
 <template>
-  <ConfigGlobal :size="currentSize">
-    <RouterView :class="greyMode ? `${prefixCls}-grey-mode` : ''" />
-  </ConfigGlobal>
+  <Suspense>
+    <ConfigGlobal :size="currentSize">
+      <RouterView :class="greyMode ? `${prefixCls}-grey-mode` : ''" />
+    </ConfigGlobal>
+  </Suspense>
 </template>
 
 <style lang="less">
