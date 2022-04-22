@@ -4,6 +4,7 @@ import { ContentWrap } from '@/components/ContentWrap'
 import { useI18n } from '@/hooks/web/useI18n'
 import { Crud } from '@/components/Crud'
 import { getDictOneApi } from '@/api/common'
+import { useCrud } from '@/hooks/web/useCrud'
 
 const { t } = useI18n()
 
@@ -35,7 +36,10 @@ const crudSchema = reactive<CrudSchema[]>([
       },
       {
         field: 'display_time',
-        label: t('tableDemo.displayTime')
+        label: t('tableDemo.displayTime'),
+        table: {
+          show: false
+        }
       },
       {
         field: 'importance',
@@ -57,10 +61,12 @@ const crudSchema = reactive<CrudSchema[]>([
     label: t('tableDemo.action')
   }
 ])
+
+const { register } = useCrud()
 </script>
 
 <template>
   <ContentWrap :title="t('crudDemo.title')" :message="t('crudDemo.crudDes')">
-    <Crud :schema="crudSchema" />
+    <Crud :schema="crudSchema" @register="register" />
   </ContentWrap>
 </template>

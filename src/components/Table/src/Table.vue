@@ -98,7 +98,8 @@ export default defineComponent({
     expose({
       setProps,
       setColumn,
-      selections
+      selections,
+      elTableRef
     })
 
     const pagination = computed(() => {
